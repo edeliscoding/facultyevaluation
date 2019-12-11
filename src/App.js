@@ -4,7 +4,8 @@ import Myquestion from './components/Myquestion';
 
 class App extends Component {
 state = {
-  questions: questionData
+  questions: questionData,
+  total: 5
 };
      
 onQuestionChange = (e) => this.setState({
@@ -13,12 +14,13 @@ onQuestionChange = (e) => this.setState({
 
   render(){
    const {questions} = this.state;
-
+    const avg = this.state.total / this.state.questions.length;
     return (
       <div >
          {
-           questions.map(question => <Myquestion key={question.id} text={question.question}></Myquestion>)
+           questions.map(question => <Myquestion total={this.state.total} key={question.id} text={question.question}></Myquestion>)
          }
+  <h3>Your average evaluation score is: {avg}</h3>
       </div>
       
     )
